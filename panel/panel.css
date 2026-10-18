@@ -1,0 +1,277 @@
+/* ==============================================================
+   Panel privado. Mismos colores y aire que la web, pero pensado
+   para trabajar: campos grandes y botones cómodos en el móvil.
+   ============================================================== */
+
+:root{
+  --papel:#F7F7F5;
+  --blanco:#FFFFFF;
+  --tinta:#141414;
+  --tinta2:#4A4A4A;
+  --gris:#7A7A76;
+  --linea:#DCDCD7;
+  --rojo:#B02418;
+  --rojo-claro:#F3E4E2;
+  --verde:#1F6B3A;
+  --ancho:940px;
+}
+
+*{box-sizing:border-box}
+
+html{-webkit-text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:var(--papel);
+  color:var(--tinta);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;
+  line-height:1.5;
+  padding-bottom:88px;
+}
+
+.saltar{
+  position:absolute;left:-9999px;
+  background:var(--tinta);color:var(--papel);
+  padding:10px 16px;z-index:99;
+}
+.saltar:focus{left:12px;top:12px}
+
+/* ---- Cabecera ---- */
+.cab{
+  background:var(--tinta);
+  color:#EDEDE9;
+  position:sticky;top:0;z-index:20;
+}
+.cab-in{
+  max-width:var(--ancho);margin:0 auto;
+  display:flex;align-items:center;gap:14px;
+  padding:12px 18px;
+  flex-wrap:wrap;
+}
+.marca{
+  font-family:Constantia,Georgia,serif;
+  font-size:19px;letter-spacing:.02em;
+}
+.marca em{font-style:normal;color:var(--rojo);margin-left:6px}
+.quien{
+  font-size:13px;color:#B6B6B0;
+  margin-right:auto;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  max-width:100%;
+}
+.enlace{
+  color:#EDEDE9;font-size:13px;text-decoration:none;
+  border-bottom:1px solid #4a4a4a;padding-bottom:2px;
+}
+.enlace:hover{border-color:var(--rojo)}
+
+/* ---- Pestañas ---- */
+.tabs{
+  max-width:var(--ancho);margin:0 auto;
+  display:flex;gap:6px;
+  padding:18px 18px 0;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{
+  flex:0 0 auto;
+  background:none;border:0;border-bottom:2px solid transparent;
+  color:var(--tinta2);
+  font:inherit;font-size:15px;
+  padding:10px 14px;
+  cursor:pointer;
+}
+.tabs button:hover{color:var(--tinta)}
+.tabs button[aria-selected="true"]{
+  color:var(--tinta);font-weight:600;
+  border-bottom-color:var(--rojo);
+}
+
+/* ---- Secciones ---- */
+.seccion{
+  max-width:var(--ancho);margin:0 auto;
+  padding:22px 18px 10px;
+}
+.seccion h2{
+  font-family:Constantia,Georgia,serif;
+  font-size:25px;margin:0 0 6px;font-weight:400;
+}
+.seccion h3{
+  font-size:16px;margin:34px 0 6px;
+  padding-top:18px;border-top:1px solid var(--linea);
+}
+.ayuda{color:var(--gris);font-size:14px;margin:0 0 18px}
+
+.cargando,.fallo{
+  max-width:var(--ancho);margin:0 auto;padding:26px 18px;
+  color:var(--tinta2);
+}
+.fallo{
+  background:var(--rojo-claro);
+  border-left:3px solid var(--rojo);
+  margin:18px auto;max-width:calc(var(--ancho) - 36px);
+}
+.fallo a{color:var(--rojo);font-weight:600}
+
+/* ---- Campos ---- */
+.campo{
+  display:block;
+  margin-bottom:12px;
+}
+.campo span{
+  display:block;
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gris);margin-bottom:4px;
+}
+.campo span b{
+  color:var(--tinta2);font-weight:600;
+  text-transform:none;letter-spacing:0;
+}
+input[type="text"],textarea{
+  width:100%;
+  font:inherit;font-size:15px;
+  color:var(--tinta);
+  background:var(--blanco);
+  border:1px solid var(--linea);
+  border-radius:2px;
+  padding:10px 11px;
+}
+textarea{resize:vertical;min-height:76px;line-height:1.45}
+input[type="text"]:focus,textarea:focus{
+  outline:2px solid var(--rojo);outline-offset:-1px;border-color:var(--rojo);
+}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.dos{grid-template-columns:1fr}}
+
+/* ---- Copiar de un idioma al otro ---- */
+.idiomas{
+  display:flex;align-items:center;flex-wrap:wrap;gap:8px;
+  margin-top:12px;padding:9px 11px;
+  background:var(--papel);border:1px solid var(--linea);border-radius:2px;
+}
+.idiomas-txt{
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gris);font-weight:600;
+}
+.boton.idioma{
+  background:var(--blanco);color:var(--tinta);
+  border:1px solid var(--tinta2);
+  font-size:13px;padding:7px 12px;
+  white-space:nowrap;font-weight:600;
+}
+.boton.idioma:hover{background:var(--tinta);color:var(--papel);border-color:var(--tinta)}
+.boton.idioma[disabled]{opacity:.55;cursor:progress}
+.boton.idioma[disabled]:hover{background:var(--blanco);color:var(--tinta);border-color:var(--tinta2)}
+
+/* ---- Botones ---- */
+.boton{
+  font:inherit;font-size:15px;
+  background:var(--tinta);color:var(--papel);
+  border:0;border-radius:2px;
+  padding:11px 18px;
+  cursor:pointer;
+}
+.boton:hover{background:#2B2B2B}
+.boton:disabled{opacity:.45;cursor:default}
+.boton.suave{
+  background:none;color:var(--tinta);
+  border:1px solid var(--linea);
+}
+.boton.suave:hover{background:var(--blanco);border-color:var(--tinta)}
+.boton.principal{background:var(--rojo)}
+.boton.principal:hover{background:#8F1C13}
+.boton.peligro{
+  background:none;color:var(--rojo);
+  border:1px solid var(--linea);
+  font-size:14px;padding:8px 12px;
+}
+.boton.peligro:hover{background:var(--rojo-claro);border-color:var(--rojo)}
+
+/* ---- Subir fotos ---- */
+.subir{
+  border:1px dashed var(--linea);
+  background:var(--blanco);
+  padding:20px;text-align:center;
+  margin-bottom:18px;
+}
+.subir.encima{border-color:var(--rojo);background:var(--rojo-claro)}
+.subir-txt{color:var(--gris);font-size:14px;margin-left:12px}
+.progreso{
+  background:var(--blanco);border-left:3px solid var(--rojo);
+  padding:10px 14px;font-size:14px;margin:0 0 18px;
+}
+
+/* ---- Lista de fotos ---- */
+.fotos{list-style:none;margin:0;padding:0}
+.foto{
+  background:var(--blanco);
+  border:1px solid var(--linea);
+  margin-bottom:14px;
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:16px;
+  padding:14px;
+}
+.foto img{
+  width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;
+  display:block;background:var(--tinta);
+}
+.foto-datos .campo{margin-bottom:10px}
+.foto-botones{
+  grid-column:1 / -1;
+  display:flex;gap:8px;flex-wrap:wrap;
+  padding-top:10px;border-top:1px solid var(--linea);
+}
+.foto-botones .num{
+  font-size:13px;color:var(--gris);margin-right:auto;align-self:center;
+}
+@media(max-width:640px){
+  .foto{grid-template-columns:1fr}
+}
+
+/* ---- Tarjetas de servicios y preguntas ---- */
+.tarjeta{
+  background:var(--blanco);
+  border:1px solid var(--linea);
+  padding:16px;
+  margin-bottom:14px;
+}
+.tarjeta-cab{
+  display:flex;align-items:center;gap:10px;
+  padding-bottom:10px;margin-bottom:12px;
+  border-bottom:1px solid var(--linea);
+}
+.tarjeta-cab strong{font-size:14px;color:var(--tinta2);margin-right:auto}
+
+/* ---- Barra de guardar ---- */
+.barra{
+  position:fixed;left:0;right:0;bottom:0;z-index:30;
+  background:var(--blanco);
+  border-top:1px solid var(--linea);
+  box-shadow:0 -6px 20px rgba(0,0,0,.06);
+  display:flex;align-items:center;gap:14px;
+  padding:12px 18px;
+  padding-bottom:calc(12px + env(safe-area-inset-bottom));
+}
+.estado{
+  font-size:14px;color:var(--gris);
+  margin-right:auto;
+}
+.estado.sucio{color:var(--rojo);font-weight:600}
+
+/* ---- Aviso flotante ---- */
+.aviso{
+  position:fixed;left:50%;bottom:96px;transform:translateX(-50%);
+  background:var(--tinta);color:var(--papel);
+  padding:12px 18px;font-size:14px;
+  border-radius:2px;z-index:40;
+  max-width:calc(100% - 36px);
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+.aviso.malo{background:var(--rojo)}
+
+@media(prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+}

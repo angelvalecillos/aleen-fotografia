@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F7F7F5">
+<title>Esa página no existe — Eyelean Medina</title>
+<meta name="robots" content="noindex">
+<!-- Autocontenida a propósito: se sirve para cualquier dirección inventada,
+     así que no puede depender de rutas de archivos. -->
+<style>
+  :root { --papel:#F7F7F5; --tinta:#161616; --gris:#6E6A64; --acc:#B02418; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:var(--papel); color:var(--tinta); padding:32px;
+    font-family:Constantia,"Palatino Linotype",Palatino,Georgia,serif; line-height:1.6;
+  }
+  .caja { max-width:520px; width:100%; }
+  .marca {
+    font-size:.78rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--gris); margin:0 0 28px;
+  }
+  .num {
+    font-size:clamp(4rem,18vw,7rem); line-height:.9; margin:0;
+    letter-spacing:-.02em;
+  }
+  h1 { font-size:1.5rem; margin:18px 0 12px; font-weight:600; letter-spacing:-.01em; }
+  p { margin:0 0 12px; color:var(--gris); }
+  .en { font-size:.94rem; font-style:italic; }
+  hr { border:0; border-top:1px solid rgba(22,22,22,.18); margin:28px 0; }
+  a.boton {
+    display:inline-block; margin-top:10px; padding:12px 22px;
+    border:1px solid var(--tinta); color:var(--tinta); text-decoration:none;
+    font-size:.9rem; letter-spacing:.06em; text-transform:uppercase;
+  }
+  a.boton:hover, a.boton:focus-visible { background:var(--tinta); color:var(--papel); }
+  a.boton:focus-visible { outline:2px solid var(--acc); outline-offset:3px; }
+  a { color:var(--acc); }
+</style>
+</head>
+<body>
+  <main class="caja">
+    <p class="marca">Eyelean Medina — Fotografía</p>
+    <p class="num" aria-hidden="true">404</p>
+    <h1>Esta página no está</h1>
+    <p>El enlace que has seguido no lleva a ninguna parte: puede que se haya movido o que esté mal escrito.</p>
+    <hr>
+    <p class="en" lang="en">The page you were looking for isn’t here. It may have moved, or the link may be mistyped.</p>
+    <a class="boton" href="/">Volver al inicio</a>
+  </main>
+</body>
+</html>

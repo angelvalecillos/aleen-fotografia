@@ -1,0 +1,4 @@
+# El panel privado no se indexa. (No es la seguridad: eso lo hace el login.)
+User-agent: *
+Disallow: /panel/
+Disallow: /api/

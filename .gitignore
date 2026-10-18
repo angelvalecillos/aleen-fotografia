@@ -4,3 +4,9 @@ MEMORY.md
 agents.md
 memory.md
 
+
+# Documentos internos y copias: nunca se publican
+presupuesto/
+especificaciones/
+vista-cliente.html
+.wrangler/

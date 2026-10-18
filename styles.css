@@ -1,0 +1,218 @@
+/* Eyelean Medina — 2ª pasada (skill frontend-design).
+   Dirección: copia de autor en blanco y negro. Papel neutro (no crema cálida),
+   reglas de pelo, tipografía de libro, un solo rojo de cuarto oscuro para
+   interactivo. Elemento memorable: la hoja de contactos del portfolio.
+   Sin dependencias; funciona con file:// */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#F7F7F5;--paper-2:#EDEDEA;
+  --ink:#151515;--ink-2:#333330;--mut:#6E6E69;
+  --line:#DEDDD7;--line-strong:#C7C6BF;
+  --acc:#B02418;--acc-ink:#8A1B12;--acc-dark:#E08C81;
+  --dark:#141414;--dark-2:#2C2C29;
+  --on-dark:#EDEDEA;--on-dark-mut:#A5A59E;
+  color-scheme:light;
+}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:rgba(176,36,24,.2)}
+body{font-family:"Segoe UI",system-ui,-apple-system,Arial,Helvetica,sans-serif;font-size:16px;line-height:1.65;color:var(--ink);background:var(--paper);overflow-x:hidden}
+h1,h2,h3,.brand,.quotetext,.stats-grid strong,.feat-grid strong,.extras strong,.fn{font-family:Constantia,"Palatino Linotype","Book Antiqua",Georgia,serif}
+h1{font-size:clamp(36px,5.4vw,58px);line-height:1.04;letter-spacing:-.015em;margin-bottom:16px;text-wrap:balance}
+h2{font-size:clamp(26px,3.3vw,38px);line-height:1.12;letter-spacing:-.01em;margin-bottom:12px;text-wrap:balance}
+h3{font-size:20px;line-height:1.3}
+p{max-width:68ch}
+section{scroll-margin-top:80px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 18px;z-index:50}
+.skip:focus{left:8px;top:8px}
+
+/* Header */
+.topbar{position:sticky;top:0;background:rgba(247,247,245,.95);border-bottom:1px solid var(--line);z-index:10}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;min-height:68px;gap:16px}
+.brand{font-size:23px;text-decoration:none;color:var(--ink);line-height:1}
+.brand span{display:block;font-family:"Segoe UI",system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:.01em;color:var(--mut);margin-top:3px}
+.nav{display:flex;gap:22px;align-items:center}
+.nav a{text-decoration:none;color:var(--ink);font-size:15px;padding:4px 0;border-bottom:1px solid transparent}
+.nav a:hover{border-bottom-color:var(--ink)}
+.nav a.btn,.nav a.btn:hover{border-bottom:0}
+.top-actions{display:flex;align-items:center;gap:8px}
+.lang-btn{border:1px solid var(--line-strong);background:transparent;color:var(--ink);padding:7px 13px;font-size:13px;font-weight:700;letter-spacing:.06em;cursor:pointer;touch-action:manipulation}
+.lang-btn:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+.burger{display:none;border:1px solid var(--line-strong);background:transparent;color:var(--ink);padding:6px 12px;font-size:18px;line-height:1;cursor:pointer;touch-action:manipulation}
+
+/* Botones: geometría impresa, sin píldoras */
+.btn{display:inline-block;background:var(--acc);color:#fff;padding:13px 26px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--acc);touch-action:manipulation}
+.btn:hover{background:var(--acc-ink);border-color:var(--acc-ink)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-ghost:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.btn-small{padding:8px 16px;font-size:14px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+
+/* Banner superior: "Trabaja conmigo" — foto real sobre cortina roja.
+   Zoom lento de asentamiento al entrar (se desactiva con reduced-motion). */
+.banner{position:relative;background:#7C1A13;color:#F6E7B0;overflow:hidden}
+.banner-media{overflow:hidden}
+.banner-media img{display:block;width:100%;height:clamp(300px,33.34vw,760px);object-fit:cover;object-position:55% 40%;
+  animation:banner-zoom 14s cubic-bezier(.16,.84,.3,1) forwards}
+@keyframes banner-zoom{from{transform:scale(1.09)}to{transform:scale(1)}}
+.banner-copy{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:1080px;padding:0 20px;
+  display:flex;flex-direction:column;justify-content:center}
+.banner-title{max-width:none;margin:0;font-family:Constantia,"Palatino Linotype","Book Antiqua",Georgia,serif;
+  font-size:clamp(30px,4.2vw,52px);line-height:1.05;text-shadow:0 1px 3px rgba(70,8,4,.45)}
+.banner-label{max-width:none;margin:12px 0 2px;font-size:13px;color:#EFDFAE;text-shadow:0 1px 2px rgba(70,8,4,.5)}
+.banner-mail{max-width:none;margin:0;font-size:clamp(16px,1.6vw,20px)}
+.banner-mail a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.55);text-shadow:0 1px 3px rgba(70,8,4,.5)}
+.banner-mail a:hover{border-bottom-color:#fff}
+
+/* Hero */
+.hero{padding:72px 0 60px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:start}
+/* Rótulo de sección como regla impresa, no barra de color */
+.kicker{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--mut);margin-bottom:16px}
+.kicker::after{content:"";flex:1;height:1px;background:var(--line)}
+.lead{font-size:19px;line-height:1.6;color:var(--ink-2);margin-bottom:24px;max-width:54ch}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+/* Ficha técnica: filas con reglas y marcas de registro */
+.hero-meta{list-style:none;border-top:1px solid var(--line);max-width:52ch}
+.hero-meta li{position:relative;padding:9px 0 9px 22px;border-bottom:1px solid var(--line);font-size:14px;color:var(--mut)}
+.hero-meta li::before{content:"";position:absolute;left:1px;top:16px;width:6px;height:6px;border:1px solid var(--acc)}
+/* Foto en marco de copia: negro de galería */
+.hero-card{background:var(--dark);padding:14px}
+.hero-photo{position:relative;background:#000}
+.hero-photo img{width:100%;height:360px;object-fit:cover;display:block;filter:contrast(1.06)}
+.hero-tag{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,.6);color:#fff;font-size:12px;padding:4px 10px}
+.hero-card-body{color:var(--on-dark);padding:14px 2px 4px}
+.figures{font-variant-numeric:tabular-nums;font-size:14px;color:var(--on-dark-mut);max-width:none}
+.figures strong{font-family:Constantia,Georgia,serif;font-size:19px;color:var(--on-dark)}
+.social-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.social-row a{font-size:13px;color:var(--on-dark);border:1px solid var(--dark-2);padding:6px 12px;text-decoration:none}
+.social-row a:hover{border-color:var(--on-dark)}
+
+/* Sellos con reglas, sin cajas */
+.stats{border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:26px 20px}
+.stats-grid>div{border-top:1px solid var(--ink);padding-top:12px}
+.stats-grid strong{display:block;font-size:22px}
+.stats-grid span{color:var(--mut);font-size:13.5px}
+
+/* Secciones */
+.section{padding:64px 0}
+.grain{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sub{color:var(--mut);margin-bottom:28px;max-width:60ch}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+
+/* Servicios: columnas editoriales, sin tarjetas ni bloques decorativos */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:26px}
+.card{border-top:2px solid var(--ink);padding-top:14px}
+.card h3{margin:0 0 8px}
+/* Precio (editable desde el panel): si está vacío, no ocupa ni deja hueco */
+.card .precio{margin:0 0 8px;font-size:14px;font-weight:600;color:var(--acc)}
+.card .precio:empty{display:none}
+
+/* Una foto sin título aún (recién subida) no deja hueco en blanco */
+.frame figcaption:empty{display:none}
+.card p{color:var(--mut);font-size:15px;margin-bottom:10px;overflow-wrap:break-word}
+.card ul{margin-left:16px;color:var(--ink-2);font-size:14px}
+.card ul li{margin-bottom:4px}
+.extras{list-style:none;border-top:1px solid var(--line)}
+.extras li{border-bottom:1px solid var(--line);padding:11px 0;color:var(--ink-2);font-size:15px}
+.extras strong{font-weight:700}
+
+/* Proceso: la secuencia sí justifica numerar */
+.steps{list-style:none;counter-reset:s;margin:20px 0 24px;border-top:1px solid var(--line)}
+.steps li{counter-increment:s;position:relative;padding:12px 0 12px 42px;border-bottom:1px solid var(--line);font-size:15px;color:var(--ink-2)}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:13px;font-family:Constantia,Georgia,serif;font-size:14px;color:var(--acc)}
+.feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;border-top:1px solid var(--line);align-content:start}
+.feat-grid div{border-bottom:1px solid var(--line);padding:14px 0}
+.feat-grid strong{display:block;font-size:17px;margin-bottom:2px}
+.feat-grid p{color:var(--mut);font-size:14px;overflow-wrap:break-word}
+
+/* Portfolio = hoja de contactos (elemento memorable) */
+.sheet{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 16px;margin-bottom:28px;align-items:start}
+.frame{position:relative;display:block;text-decoration:none;color:inherit}
+.frame img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block;background:#000;filter:contrast(1.06)}
+.frame .fn{position:absolute;top:0;left:0;z-index:2;background:var(--acc);color:#fff;font-size:11px;padding:2px 7px}
+.frame figcaption{font-size:13px;color:var(--on-dark-mut);padding:7px 0 0}
+.frame-empty{aspect-ratio:3/2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1px dashed #45453F;text-align:center;background:transparent}
+.frame-empty .empty-txt{font-family:Constantia,Georgia,serif;font-size:19px;color:var(--on-dark);padding:0 12px}
+.frame-empty .empty-sub{font-size:12px;color:#7D7D77}
+.frame-empty:hover{border-color:var(--acc)}
+.frame-empty:hover .empty-txt{color:var(--acc-dark)}
+.frame-empty:hover .empty-sub{color:var(--on-dark-mut)}
+
+.center{text-align:center}
+.center .btn{margin:4px}
+.narrow{max-width:720px}
+
+/* Preguntas: acordeón de reglas de pelo, sin cajas */
+details{border-bottom:1px solid var(--line);padding:14px 0}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{font-family:Constantia,Georgia,serif;font-size:17px;font-weight:700;cursor:pointer}
+details p{color:var(--mut);font-size:15px;margin-top:8px;max-width:66ch}
+
+/* Contacto */
+.dark{background:var(--dark);color:var(--on-dark)}
+.dark h2{color:#fff}
+.dark .kicker{color:var(--on-dark-mut)}
+.dark .kicker::after{background:#3A3A36}
+.dark .sub{color:var(--on-dark-mut)}
+.dark .btn-ghost{color:var(--on-dark);border-color:#3A3A36}
+.dark .btn-ghost:hover{background:var(--on-dark);border-color:var(--on-dark);color:var(--dark)}
+.links{list-style:none;margin-top:20px;border-top:1px solid #3A3A36;max-width:44ch}
+.links li{border-bottom:1px solid #3A3A36}
+.links a{display:block;padding:11px 0;color:var(--on-dark);font-size:15px;text-decoration:none}
+.links a:hover{color:var(--acc-dark)}
+.form{background:#fff;color:var(--ink);padding:24px;display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--acc)}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:13.5px;font-weight:600}
+.form input,.form select,.form textarea{padding:10px 12px;border:1px solid var(--line-strong);border-radius:0;font-size:15px;font-family:inherit;background-color:#fff;color:var(--ink);min-width:0}
+.hint{font-size:12.5px;color:var(--mut);max-width:none}
+
+/* Citas: tipografía de libro sobre reglas */
+.quotes{border-top:1px solid var(--line)}
+.quotes blockquote{border-bottom:1px solid var(--line);padding:18px 0;font-family:Constantia,Georgia,serif;font-size:18px;line-height:1.5;overflow-wrap:break-word;max-width:none}
+.quotes cite{display:block;font-family:"Segoe UI",system-ui,sans-serif;font-style:normal;font-size:13px;color:var(--mut);margin-top:8px}
+
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--mut);font-size:13.5px}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.foot a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.foot a:hover{border-bottom-color:var(--ink)}
+/* Crédito y contacto del autor (skill about-contacto) */
+.pie-contacto{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;line-height:1.6;color:var(--mut)}
+.pie-contacto p{margin:0 0 4px;max-width:none}
+.pie-contacto p:last-child{margin-bottom:0}
+.pie-contacto a{color:var(--mut);text-decoration:none;border-bottom:1px solid var(--line-strong)}
+.pie-contacto a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+
+::selection{background:var(--acc);color:#fff}
+
+@media(max-width:700px){
+  /* En móvil el banner se apila: foto arriba, texto sobre el rojo macizo */
+  .banner{display:flex;flex-direction:column}
+  .banner-media img{height:auto;aspect-ratio:1/1;object-position:62% 24%}
+  .banner-copy{position:static;transform:none;width:auto;max-width:none;padding:20px 20px 24px}
+  .banner-label{margin-top:6px}
+}
+@media(max-width:900px){
+  .hero{padding:52px 0 44px}
+  .hero-grid,.grid2{grid-template-columns:1fr;gap:32px}
+  .cards3{grid-template-columns:1fr;gap:0}
+  .card{border-top:1px solid var(--line);padding:16px 0}
+  .card:first-child{border-top:2px solid var(--ink)}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .sheet{grid-template-columns:1fr 1fr}
+  .nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;align-items:flex-start;gap:0;padding:0 20px;border-bottom:1px solid var(--line)}
+  .nav.open{display:flex}
+  .nav a{width:100%;padding:14px 0;border-bottom:1px solid var(--line)}
+  .nav a.btn{margin:14px 0;border-bottom:1px solid var(--acc);text-align:center}
+  .burger{display:block}
+}
+@media(max-width:560px){
+  .sheet{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr}
+  .feat-grid{grid-template-columns:1fr;gap:0}
+  .hero-photo img{height:300px}
+  .extras{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none;animation:none}
+}

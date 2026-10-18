@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#141414">
+<title>Panel · Eyelean Medina</title>
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+
+<a class="saltar" href="#principal">Skip to the panel</a>
+
+<header class="cab">
+  <div class="cab-in">
+    <span class="marca">Eyelean<em>Medina</em></span>
+    <span class="quien" id="quien"></span>
+    <a class="enlace" href="/" target="_blank" rel="noopener">View site</a>
+    <a class="enlace" href="/cdn-cgi/access/logout">Sign out</a>
+  </div>
+</header>
+
+<p class="cargando" id="cargando">Loading your content…</p>
+
+<main id="principal" hidden>
+
+  <nav class="tabs" id="tabs" aria-label="Panel sections">
+    <button type="button" data-tab="fotos" aria-selected="true">Photos</button>
+    <button type="button" data-tab="servicios" aria-selected="false">Services</button>
+    <button type="button" data-tab="preguntas" aria-selected="false">Questions</button>
+    <button type="button" data-tab="textos" aria-selected="false">Texts</button>
+  </nav>
+
+  <section class="seccion" data-panel="fotos">
+    <h2>Portfolio photos</h2>
+    <p class="ayuda">They show on the site in the order you see here. Use the arrows to move one up or down. To fill in both languages, write the text in one of them and press <strong>Translate ES&nbsp;&#8594;&nbsp;EN</strong> (or <strong>Translate EN&nbsp;&#8594;&nbsp;ES</strong>): the translation is written into the other side. Check it and then press <strong>Save changes</strong>.</p>
+
+    <div class="subir" id="zonaSubir">
+      <input type="file" id="archivos" accept="image/jpeg,image/png,image/webp,image/avif" multiple hidden>
+      <button type="button" class="boton" id="elegir">Choose photos</button>
+      <span class="subir-txt">or drag them here</span>
+    </div>
+
+    <p class="progreso" id="progreso" hidden></p>
+    <ul class="fotos" id="listaFotos"></ul>
+  </section>
+
+  <section class="seccion" data-panel="servicios" hidden>
+    <h2>Services</h2>
+    <p class="ayuda">The price is optional: if you leave it empty it won't show on the site.</p>
+    <div id="listaServicios"></div>
+    <button type="button" class="boton suave" data-accion="svc-add">Add a service</button>
+
+    <h3>Extra lines</h3>
+    <p class="ayuda">The short list that sits under the services. You can use &lt;strong&gt;bold&lt;/strong&gt;.</p>
+    <div id="listaExtras"></div>
+    <button type="button" class="boton suave" data-accion="extra-add">Add a line</button>
+  </section>
+
+  <section class="seccion" data-panel="preguntas" hidden>
+    <h2>Frequently asked questions</h2>
+    <div id="listaFaq"></div>
+    <button type="button" class="boton suave" data-accion="faq-add">Add a question</button>
+  </section>
+
+  <section class="seccion" data-panel="textos" hidden>
+    <h2>Section texts</h2>
+    <p class="ayuda">The headings and intros for the rest of the page. Leave one empty and the original design text is used instead.</p>
+    <div id="listaTextos"></div>
+  </section>
+
+</main>
+
+<div class="barra" id="barra" hidden>
+  <span class="estado" id="estado">No changes yet</span>
+  <button type="button" class="boton principal" id="guardar" disabled>Save changes</button>
+</div>
+
+<div class="aviso" id="aviso" hidden role="status" aria-live="polite"></div>
+
+<p class="fallo" id="fallo" hidden></p>
+
+<script src="panel.js"></script>
+</body>
+</html>
